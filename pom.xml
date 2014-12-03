@@ -21,6 +21,19 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <repositories>
+    <repository>
+      <id>jsdoctk1</id>
+      <url>http://jsdoctk-plugin.googlecode.com/svn/repo</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jsdoctk2</id>
+      <url>http://jsdoctk-plugin.googlecode.com/svn/repo</url>
+    </pluginRepository>
+  </pluginRepositories>
+
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>vertx-parent</artifactId>
