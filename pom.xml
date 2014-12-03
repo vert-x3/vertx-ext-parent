@@ -21,6 +21,7 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+<!--
   <repositories>
     <repository>
       <id>jsdoctk1</id>
@@ -33,6 +34,7 @@
       <url>http://jsdoctk-plugin.googlecode.com/svn/repo</url>
     </pluginRepository>
   </pluginRepositories>
+-->
 
   <parent>
     <groupId>io.vertx</groupId>
@@ -138,11 +140,13 @@
           <artifactId>asciidoctor-maven-plugin</artifactId>
           <version>1.5.0</version>
         </plugin>
+<!--
         <plugin>
           <groupId>nl.windgazer</groupId>
           <artifactId>jsdoctk-plugin</artifactId>
           <version>2.3.2</version>
         </plugin>
+-->
         <plugin>
           <groupId>com.bluetrainsoftware.maven</groupId>
           <artifactId>groovydoc-maven-plugin</artifactId>
@@ -265,6 +269,7 @@
         </executions>
       </plugin>
 
+<!--
       <plugin>
         <groupId>nl.windgazer</groupId>
         <artifactId>jsdoctk-plugin</artifactId>
@@ -286,6 +291,7 @@
           </execution>
         </executions>
       </plugin>
+-->
 
       <plugin>
         <groupId>com.bluetrainsoftware.maven</groupId>
