@@ -218,7 +218,7 @@
             </goals>
             <configuration>
               <sourceDirectory>${asciidoc.dir}/groovy</sourceDirectory>
-              <sourceDocumentName>index.ad</sourceDocumentName>
+              <sourceDocumentName>index.adoc</sourceDocumentName>
               <outputDirectory>${project.build.directory}/docs/groovy</outputDirectory>
               <sourceHighlighter>coderay</sourceHighlighter>
               <attributes>
@@ -236,7 +236,7 @@
             </goals>
             <configuration>
               <sourceDirectory>${asciidoc.dir}/js</sourceDirectory>
-              <sourceDocumentName>index.ad</sourceDocumentName>
+              <sourceDocumentName>index.adoc</sourceDocumentName>
               <outputDirectory>${project.build.directory}/docs/js</outputDirectory>
               <sourceHighlighter>coderay</sourceHighlighter>
               <attributes>
