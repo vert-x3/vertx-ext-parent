@@ -189,7 +189,7 @@
             </goals>
             <configuration>
               <sourceDirectory>${asciidoc.dir}/java</sourceDirectory>
-              <sourceDocumentName>index.ad</sourceDocumentName>
+              <sourceDocumentName>index.adoc</sourceDocumentName>
               <outputDirectory>${project.build.directory}/docs/java</outputDirectory>
               <sourceHighlighter>coderay</sourceHighlighter>
               <attributes>
