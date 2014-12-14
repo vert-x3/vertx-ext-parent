@@ -40,6 +40,7 @@
   </scm>
 
   <properties>
+    <vertx.version>3.0.0-SNAPSHOT</vertx.version>
     <asciidoc.dir>${project.basedir}/src/main/asciidoc</asciidoc.dir>
   </properties>
 
@@ -47,30 +48,30 @@
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-core</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <version>${vertx.version}</version>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-codegen</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>${vertx.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-docgen</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <version>${vertx.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-codetrans</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <version>${vertx.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-lang-groovy</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <version>${vertx.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -82,7 +83,7 @@
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-lang-js</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <version>${vertx.version}</version>
       <optional>true</optional>
     </dependency>
   </dependencies>
