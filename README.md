@@ -1,7 +1,7 @@
 ## How to install/deploy
 
 ~~~
-% mvn install -skipDocs
+% mvn install -DskipDocs
 ~~~
 
 This is important otherwise it will fail.
