@@ -23,25 +23,14 @@
 
   <parent>
     <groupId>io.vertx</groupId>
-    <artifactId>vertx-parent</artifactId>
-    <version>2</version>
+    <artifactId>vertx-ext</artifactId>
+    <version>4-SNAPSHOT</version>
   </parent>
 
-  <artifactId>vertx-ext</artifactId>
+  <artifactId>vertx-ext-resources</artifactId>
   <version>4-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
-  <name>Vert.x Ext</name>
-
-  <scm>
-    <connection>scm:git:git@github.com:vert-x3/vertx-ext-parent.git</connection>
-    <developerConnection>scm:git:git@github.com:vert-x3/vertx-ext-parent.git</developerConnection>
-    <url>git@github.com:vert-x3/vertx-ext-parent.git</url>
-  </scm>
-
-  <modules>
-    <module>resources</module>
-    <module>parent</module>
-  </modules>
+  <name>Vert.x Ext Resources</name>
 
 </project>
