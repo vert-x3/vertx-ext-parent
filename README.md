@@ -1,3 +1,11 @@
+## How to install/deploy
+
+~~~
+% mvn install -Dnodocs
+~~~
+
+This is important otherwise it will fail.
+
 ## Base parent pom for Vert.x extension projects
 
 This parent pom extends the `io.vertx:vertx-parent` pom and provides common default configuration and execution for
