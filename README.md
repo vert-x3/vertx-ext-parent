@@ -1,7 +1,7 @@
 ## How to install/deploy
 
 ~~~
-% mvn install -Dnodocs
+% mvn install -skipDocs
 ~~~
 
 This is important otherwise it will fail.
