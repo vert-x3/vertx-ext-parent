@@ -72,7 +72,7 @@
                 <generatedSourcesDirectory>${project.basedir}/src/main/generated</generatedSourcesDirectory>
                 <compilerArgs>
                   <arg>-AoutputDirectory=${project.basedir}/src/main</arg>
-                  <arg>-Adocgen.output=${asciidoc.dir}/${name}</arg>
+                  <arg>-Adocgen.output=${asciidoc.dir}</arg>
                 </compilerArgs>
               </configuration>
             </execution>
