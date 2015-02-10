@@ -72,7 +72,8 @@
                 <generatedSourcesDirectory>${project.basedir}/src/main/generated</generatedSourcesDirectory>
                 <compilerArgs>
                   <arg>-AoutputDirectory=${project.basedir}/src/main</arg>
-                  <arg>-Adocgen.output=${asciidoc.dir}</arg>
+                  <!-- $lang is replaced by the docgen processor to the target lang -->
+                  <arg>-Adocgen.output=${asciidoc.dir}/$lang</arg>
                 </compilerArgs>
               </configuration>
             </execution>
@@ -275,7 +276,7 @@
             </dependencies>
             <executions>
               <execution>
-                <id>assemble-html</id>
+                <id>package-docs</id>
                 <phase>package</phase>
                 <goals>
                   <goal>single</goal>
@@ -283,7 +284,7 @@
                 <configuration>
                   <attach>true</attach>
                   <descriptorRefs>
-                    <descriptorRef>html</descriptorRef>
+                    <descriptorRef>docs</descriptorRef>
                   </descriptorRefs>
                 </configuration>
               </execution>
