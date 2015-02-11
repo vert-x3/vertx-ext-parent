@@ -99,6 +99,13 @@
           <artifactId>groovydoc-maven-plugin</artifactId>
           <version>1.3</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <sourcepath>${basedir}/src/main/java;${basedir}/src/main/generated</sourcepath>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
