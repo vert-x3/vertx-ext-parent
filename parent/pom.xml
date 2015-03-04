@@ -147,7 +147,7 @@
 
   <profiles>
 
-    <!-- Documentation generation -->
+    <!-- Documentation generation : use -DskipDocs to skip documentation generation -->
     <profile>
       <id>doc</id>
       <activation>
@@ -161,57 +161,17 @@
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
             <executions>
-              <!-- We need several executions of the plugin until 1.5.1 is released and use the
-                   preserveDirectories config option -->
               <execution>
-                <id>asciidoctor-java</id>
+                <id>asciidoctor</id>
                 <goals>
                   <goal>process-asciidoc</goal>
                 </goals>
                 <configuration>
-                  <sourceDirectory>${asciidoc.dir}/java</sourceDirectory>
-                  <sourceDocumentName>index.adoc</sourceDocumentName>
-                  <outputDirectory>${project.build.directory}/docs/java</outputDirectory>
+                  <sourceDirectory>${asciidoc.dir}</sourceDirectory>
+                  <outputDirectory>${project.build.directory}/docs</outputDirectory>
                   <sourceHighlighter>coderay</sourceHighlighter>
-                  <attributes>
-                    <lang>java</lang>
-                  </attributes>
-                  <backend>html</backend>
-                  <doctype>book</doctype>
-                </configuration>
-                <phase>package</phase>
-              </execution>
-              <execution>
-                <id>asciidoctor-groovy</id>
-                <goals>
-                  <goal>process-asciidoc</goal>
-                </goals>
-                <configuration>
-                  <sourceDirectory>${asciidoc.dir}/groovy</sourceDirectory>
-                  <sourceDocumentName>index.adoc</sourceDocumentName>
-                  <outputDirectory>${project.build.directory}/docs/groovy</outputDirectory>
-                  <sourceHighlighter>coderay</sourceHighlighter>
-                  <attributes>
-                    <lang>groovy</lang>
-                  </attributes>
-                  <backend>html</backend>
-                  <doctype>book</doctype>
-                </configuration>
-                <phase>package</phase>
-              </execution>
-              <execution>
-                <id>asciidoctor-js</id>
-                <goals>
-                  <goal>process-asciidoc</goal>
-                </goals>
-                <configuration>
-                  <sourceDirectory>${asciidoc.dir}/js</sourceDirectory>
-                  <sourceDocumentName>index.adoc</sourceDocumentName>
-                  <outputDirectory>${project.build.directory}/docs/js</outputDirectory>
-                  <sourceHighlighter>coderay</sourceHighlighter>
-                  <attributes>
-                    <lang>js</lang>
-                  </attributes>
+                  <preserveDirectories>true</preserveDirectories>
+                  <relativeBaseDir>true</relativeBaseDir>
                   <backend>html</backend>
                   <doctype>book</doctype>
                 </configuration>
