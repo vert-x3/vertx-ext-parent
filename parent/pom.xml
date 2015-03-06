@@ -168,7 +168,7 @@
                 </goals>
                 <configuration>
                   <sourceDirectory>${asciidoc.dir}</sourceDirectory>
-                  <outputDirectory>${project.build.directory}/docs</outputDirectory>
+                  <outputDirectory>${project.build.directory}/docs/${project.artifactId}</outputDirectory>
                   <sourceHighlighter>coderay</sourceHighlighter>
                   <preserveDirectories>true</preserveDirectories>
                   <relativeBaseDir>true</relativeBaseDir>
@@ -186,7 +186,7 @@
               <execution>
                 <phase>package</phase>
                 <configuration>
-                  <reportOutputDirectory>${project.build.directory}/docs/java</reportOutputDirectory>
+                  <reportOutputDirectory>${project.build.directory}/docs</reportOutputDirectory>
                 </configuration>
                 <goals>
                   <goal>javadoc</goal>
@@ -209,7 +209,7 @@
                   <directoryRoots>
                     <directoryRoot>${basedir}/src/main/resources</directoryRoot>
                   </directoryRoots>
-                  <outputDirectory>${project.build.directory}/docs/js/jsdoc</outputDirectory>
+                  <outputDirectory>${project.build.directory}/docs/${project.artifactId}/js/jsdoc</outputDirectory>
                 </configuration>
               </execution>
             </executions>
@@ -224,7 +224,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <destinationDirectory>${project.build.directory}/docs/groovy/groovydoc</destinationDirectory>
+                  <destinationDirectory>${project.build.directory}/docs/${project.artifactId}/groovy/groovydoc</destinationDirectory>
                   <scope>public</scope>
                   <skipJavadoc>true</skipJavadoc>
                 </configuration>
