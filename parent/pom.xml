@@ -35,6 +35,10 @@
 
   <properties>
     <asciidoc.dir>${project.basedir}/src/main/asciidoc</asciidoc.dir>
+
+    <!-- We skip sources jar generation as we do it with the assembly plugin to have greater
+         control over the content -->
+    <source.skip>true</source.skip>
   </properties>
 
   <build>
@@ -106,7 +110,12 @@
             <sourcepath>${basedir}/src/main/java;${basedir}/src/main/generated</sourcepath>
           </configuration>
         </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.5.3</version>
+        </plugin>
       </plugins>
+
     </pluginManagement>
     <plugins>
 
@@ -142,6 +151,39 @@
           </execution>
         </executions>
       </plugin>
+
+      <!-- Package sources -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-ext-resources</artifactId>
+            <version>9-SNAPSHOT</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>package-sources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <attach>true</attach>
+              <archive>
+                <!-- Need a manifest to avoid empty archive -->
+                <manifest>
+                </manifest>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>sources</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
 
@@ -149,7 +191,7 @@
 
     <!-- Documentation generation : use -DskipDocs to skip documentation generation -->
     <profile>
-      <id>doc</id>
+      <id>docs</id>
       <activation>
         <property>
           <name>!skipDocs</name>
