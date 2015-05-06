@@ -226,7 +226,7 @@
                   <backend>html</backend>
                   <doctype>book</doctype>
                 </configuration>
-                <phase>package</phase>
+                <phase>prepare-package</phase>
               </execution>
             </executions>
           </plugin>
@@ -235,7 +235,7 @@
             <artifactId>maven-javadoc-plugin</artifactId>
             <executions>
               <execution>
-                <phase>package</phase>
+                <phase>prepare-package</phase>
                 <configuration>
                   <reportOutputDirectory>${project.build.directory}/docs</reportOutputDirectory>
                 </configuration>
@@ -251,7 +251,7 @@
             <version>1.1.0</version>
             <executions>
               <execution>
-                <phase>package</phase>
+                <phase>prepare-package</phase>
                 <goals>
                   <goal>jsdoc3</goal>
                 </goals>
@@ -270,7 +270,7 @@
             <artifactId>groovydoc-maven-plugin</artifactId>
             <executions>
               <execution>
-                <phase>package</phase>
+                <phase>prepare-package</phase>
                 <goals>
                   <goal>generate</goal>
                 </goals>
