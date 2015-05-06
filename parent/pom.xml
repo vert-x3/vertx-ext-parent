@@ -197,6 +197,18 @@
           <name>!skipDocs</name>
         </property>
       </activation>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>rubygems-releases</id>
+          <url>http://rubygems-proxy.torquebox.org/releases</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <repositories>
+        <repository>
+          <id>rubygems-releases</id>
+          <url>http://rubygems-proxy.torquebox.org/releases</url>
+        </repository>
+      </repositories>
       <dependencies>
         <dependency>
           <groupId>rubygems</groupId>
@@ -286,41 +298,32 @@
             <groupId>de.saumya.mojo</groupId>
             <artifactId>gem-maven-plugin</artifactId>
             <version>1.0.9</version>
-            <configuration>
-              <includeGemsInResources>true</includeGemsInResources>
-            </configuration>
             <executions>
               <execution>
                 <goals>
-                  <goal>initialize</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>de.saumya.mojo</groupId>
-            <artifactId>jruby-maven-plugin</artifactId>
-            <version>1.0.9</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>jruby</goal>
+                  <goal>exec</goal>
                 </goals>
                 <phase>prepare-package</phase>
                 <configuration>
-                  <args>doc --no-private -m html -o ${project.build.directory}/docs/${project.artifactId}/ruby/yardoc ${project.basedir}/src/main/resources/**/*.rb</args>
-                  <!-- Literal dump of /usr/bin/yard -->
-                  <script>
-                    require 'rubygems'
-                    str = ARGV.first
-                    gem 'yard', ">= 0"
-                    load Gem.bin_path('yard', 'yard', ">= 0")
-                  </script>
+                  <execArgs>${project.build.directory}/rubygems/bin/yardoc --no-private -m html -o ${project.build.directory}/docs/${project.artifactId}/ruby/yardoc ${project.basedir}/src/main/resources/**/*.rb</execArgs>
                 </configuration>
               </execution>
             </executions>
+            <dependencies>
+              <dependency>
+                <groupId>rubygems</groupId>
+                <artifactId>yard</artifactId>
+                <version>0.8.7.6</version>
+                <type>gem</type>
+              </dependency>
+              <dependency>
+                <groupId>rubygems</groupId>
+                <artifactId>asciidoctor</artifactId>
+                <version>1.5.2</version>
+                <type>gem</type>
+              </dependency>
+            </dependencies>
           </plugin>
-
           <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
             <dependencies>
@@ -348,12 +351,6 @@
           </plugin>
         </plugins>
       </build>
-      <repositories>
-        <repository>
-          <id>rubygems-releases</id>
-          <url>http://rubygems-proxy.torquebox.org/releases</url>
-        </repository>
-      </repositories>
     </profile>
   </profiles>
 
