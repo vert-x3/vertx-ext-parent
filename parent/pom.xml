@@ -197,6 +197,15 @@
           <name>!skipDocs</name>
         </property>
       </activation>
+      <dependencies>
+        <dependency>
+          <groupId>rubygems</groupId>
+          <artifactId>yard</artifactId>
+          <version>0.8.7.6</version>
+          <type>gem</type>
+          <scope>provided</scope>
+        </dependency>
+      </dependencies>
       <build>
         <plugins>
           <plugin>
@@ -269,6 +278,44 @@
                   <destinationDirectory>${project.build.directory}/docs/${project.artifactId}/groovy/groovydoc</destinationDirectory>
                   <scope>public</scope>
                   <skipJavadoc>true</skipJavadoc>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>de.saumya.mojo</groupId>
+            <artifactId>gem-maven-plugin</artifactId>
+            <version>1.0.9</version>
+            <configuration>
+              <includeGemsInResources>true</includeGemsInResources>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>initialize</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>de.saumya.mojo</groupId>
+            <artifactId>jruby-maven-plugin</artifactId>
+            <version>1.0.9</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>jruby</goal>
+                </goals>
+                <phase>prepare-package</phase>
+                <configuration>
+                  <args>doc --no-private -m html -o ${project.build.directory}/docs/${project.artifactId}/ruby/yardoc ${project.basedir}/src/main/resources/**/*.rb</args>
+                  <!-- Literal dump of /usr/bin/yard -->
+                  <script>
+                    require 'rubygems'
+                    str = ARGV.first
+                    gem 'yard', version
+                    load Gem.bin_path('yard', 'yard', ">= 0")
+                  </script>
                 </configuration>
               </execution>
             </executions>
