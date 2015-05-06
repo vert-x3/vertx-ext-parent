@@ -313,7 +313,7 @@
                   <script>
                     require 'rubygems'
                     str = ARGV.first
-                    gem 'yard', version
+                    gem 'yard', ">= 0"
                     load Gem.bin_path('yard', 'yard', ">= 0")
                   </script>
                 </configuration>
