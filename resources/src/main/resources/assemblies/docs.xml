@@ -17,6 +17,7 @@
       <includes>
         <include>groovy/groovydoc/**</include>
         <include>js/jsdoc/**</include>
+        <include>ruby/yardoc/**</include>
       </includes>
     </fileSet>
   </fileSets>
