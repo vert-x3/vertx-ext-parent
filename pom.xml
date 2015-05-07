@@ -28,7 +28,7 @@
   </parent>
 
   <artifactId>vertx-ext</artifactId>
-  <version>12</version>
+  <version>13-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Vert.x Ext</name>
