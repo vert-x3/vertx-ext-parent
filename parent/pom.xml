@@ -290,6 +290,7 @@
                   <destinationDirectory>${project.build.directory}/docs/${project.artifactId}/groovy/groovydoc</destinationDirectory>
                   <scope>public</scope>
                   <skipJavadoc>true</skipJavadoc>
+                  <extensions>.groovy</extensions>
                 </configuration>
               </execution>
             </executions>
