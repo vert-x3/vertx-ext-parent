@@ -36,6 +36,13 @@
   <properties>
     <asciidoc.dir>${project.basedir}/src/main/asciidoc</asciidoc.dir>
 
+    <!--
+      Configure plugins that skip building documentation that otherwise would fail without
+      the documentation bits. This is useful in pom aggregators that don't have documentation
+      to build, they change this property to true.
+    -->
+    <doc.skip>false</doc.skip>
+
     <!-- We skip sources jar generation as we do it with the assembly plugin to have greater
          control over the content -->
     <source.skip>true</source.skip>
@@ -96,7 +103,7 @@
         <plugin>
           <groupId>org.asciidoctor</groupId>
           <artifactId>asciidoctor-maven-plugin</artifactId>
-          <version>1.5.2</version>
+          <version>1.5.2.1</version>
         </plugin>
         <plugin>
           <groupId>com.bluetrainsoftware.maven</groupId>
@@ -235,6 +242,7 @@
                   <sourceHighlighter>coderay</sourceHighlighter>
                   <preserveDirectories>true</preserveDirectories>
                   <relativeBaseDir>true</relativeBaseDir>
+                  <skip>${doc.skip}</skip>
                   <backend>html</backend>
                   <doctype>book</doctype>
                 </configuration>
@@ -249,6 +257,7 @@
               <execution>
                 <phase>prepare-package</phase>
                 <configuration>
+                  <skip>${doc.skip}</skip>
                   <reportOutputDirectory>${project.build.directory}/docs</reportOutputDirectory>
                 </configuration>
                 <goals>
@@ -269,6 +278,7 @@
                 </goals>
                 <configuration>
                   <recursive>true</recursive>
+                  <skip>${doc.skip}</skip>
                   <directoryRoots>
                     <directoryRoot>${basedir}/src/main/resources</directoryRoot>
                   </directoryRoots>
@@ -342,6 +352,7 @@
                   <goal>single</goal>
                 </goals>
                 <configuration>
+                  <skipAssembly>${doc.skip}</skipAssembly>
                   <attach>true</attach>
                   <descriptorRefs>
                     <descriptorRef>docs</descriptorRef>
