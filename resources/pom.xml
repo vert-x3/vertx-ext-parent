@@ -24,11 +24,11 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>vertx-ext</artifactId>
-    <version>15</version>
+    <version>16-SNAPSHOT</version>
   </parent>
 
   <artifactId>vertx-ext-resources</artifactId>
-  <version>15</version>
+  <version>16-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Vert.x Ext Resources</name>
