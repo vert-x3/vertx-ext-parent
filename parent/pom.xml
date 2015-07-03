@@ -225,6 +225,11 @@
                   <skip>${doc.skip}</skip>
                   <backend>html</backend>
                   <doctype>book</doctype>
+                  <attributes>
+                    <maven-groupId>${project.groupId}</maven-groupId>
+                    <maven-artifactId>${project.artifactId}</maven-artifactId>
+                    <maven-version>${project.version}</maven-version>
+                  </attributes>
                 </configuration>
                 <phase>prepare-package</phase>
               </execution>
