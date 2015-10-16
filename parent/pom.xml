@@ -62,6 +62,9 @@
                     <directory>src/main/asciidoc</directory>
                   </fileset>
                   <fileset>
+                    <directory>src/main/generated</directory>
+                  </fileset>
+                  <fileset>
                     <directory>${asciidoc.dir}</directory>
                   </fileset>
                 </filesets>
