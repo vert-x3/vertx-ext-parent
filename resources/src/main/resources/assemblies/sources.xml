@@ -10,9 +10,6 @@
     <fileSet>
       <directory>${project.basedir}/src/main/java</directory>
       <outputDirectory>/</outputDirectory>
-      <excludes>
-        <exclude>examples/**</exclude>
-      </excludes>
     </fileSet>
     <fileSet>
       <directory>${project.basedir}/src/main/resources</directory>
