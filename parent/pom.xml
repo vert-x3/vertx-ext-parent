@@ -183,14 +183,9 @@
 
   <profiles>
 
-    <!-- Documentation generation : use -DskipDocs to skip documentation generation -->
+    <!-- Documentation generation : activate with -Pdocs -->
     <profile>
       <id>docs</id>
-      <activation>
-        <property>
-          <name>!skipDocs</name>
-        </property>
-      </activation>
       <pluginRepositories>
         <pluginRepository>
           <id>rubygems-releases</id>
