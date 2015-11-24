@@ -3,10 +3,8 @@
 [![Build Status](https://vertx.ci.cloudbees.com/buildStatus/icon?job=vert.x3-ext-parent)](https://vertx.ci.cloudbees.com/view/vert.x-3/job/vert.x3-ext-parent/)
 
 ~~~
-% mvn install -DskipDocs
+% mvn install
 ~~~
-
-This is important otherwise it will fail.
 
 ## Base parent pom for Vert.x extension projects
 
