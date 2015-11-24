@@ -146,42 +146,75 @@
         </executions>
       </plugin>
 
-      <!-- Package sources -->
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <dependencies>
-          <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-ext-resources</artifactId>
-            <version>19-SNAPSHOT</version>
-          </dependency>
-        </dependencies>
-        <executions>
-          <execution>
-            <id>package-sources</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <attach>true</attach>
-              <archive>
-                <!-- Need a manifest to avoid empty archive -->
-                <manifest>
-                </manifest>
-              </archive>
-              <descriptorRefs>
-                <descriptorRef>sources</descriptorRef>
-              </descriptorRefs>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
     </plugins>
   </build>
 
   <profiles>
+
+    <!-- Package generation -->
+    <profile>
+      <id>pkg</id>
+
+      <activation>
+        <property>
+          <name>!skipPkg</name>
+        </property>
+      </activation>
+
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <dependencies>
+              <dependency>
+                <groupId>io.vertx</groupId>
+                <artifactId>vertx-ext-resources</artifactId>
+                <version>19-SNAPSHOT</version>
+              </dependency>
+            </dependencies>
+            <executions>
+
+              <!-- Package sources -->
+              <execution>
+                <id>package-sources</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <attach>true</attach>
+                  <archive>
+                    <!-- Need a manifest to avoid empty archive -->
+                    <manifest>
+                    </manifest>
+                  </archive>
+                  <descriptorRefs>
+                    <descriptorRef>sources</descriptorRef>
+                  </descriptorRefs>
+                </configuration>
+              </execution>
+
+              <!-- Package docs -->
+              <execution>
+                <id>package-docs</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <skipAssembly>${doc.skip}</skipAssembly>
+                  <attach>true</attach>
+                  <descriptorRefs>
+                    <descriptorRef>docs</descriptorRef>
+                  </descriptorRefs>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+
+    </profile>
 
     <!-- Documentation generation : activate with -Pdocs -->
     <profile>
@@ -320,32 +353,6 @@
                 <type>gem</type>
               </dependency>
             </dependencies>
-          </plugin>
-          <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <dependencies>
-              <dependency>
-                <groupId>io.vertx</groupId>
-                <artifactId>vertx-ext-resources</artifactId>
-                <version>19-SNAPSHOT</version>
-              </dependency>
-            </dependencies>
-            <executions>
-              <execution>
-                <id>package-docs</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>single</goal>
-                </goals>
-                <configuration>
-                  <skipAssembly>${doc.skip}</skipAssembly>
-                  <attach>true</attach>
-                  <descriptorRefs>
-                    <descriptorRef>docs</descriptorRef>
-                  </descriptorRefs>
-                </configuration>
-              </execution>
-            </executions>
           </plugin>
         </plugins>
       </build>
