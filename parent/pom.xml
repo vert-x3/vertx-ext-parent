@@ -34,7 +34,6 @@
   <name>Vert.x Ext Parent</name>
 
   <properties>
-    <asciidoc.dir>${project.basedir}/src/main/asciidoc</asciidoc.dir>
 
     <!--
       Configure plugins that skip building documentation that otherwise would fail without
@@ -59,13 +58,13 @@
               <configuration>
                 <filesets>
                   <fileset>
-                    <directory>src/main/asciidoc</directory>
-                  </fileset>
-                  <fileset>
                     <directory>src/main/generated</directory>
                   </fileset>
                   <fileset>
                     <directory>${asciidoc.dir}</directory>
+                    <excludes>
+                      <exclude>images/**</exclude>
+                    </excludes>
                   </fileset>
                 </filesets>
               </configuration>
@@ -105,12 +104,7 @@
         <plugin>
           <groupId>org.codehaus.gmavenplus</groupId>
           <artifactId>gmavenplus-plugin</artifactId>
-          <version>1.2</version>
-        </plugin>
-        <plugin>
-          <groupId>org.asciidoctor</groupId>
-          <artifactId>asciidoctor-maven-plugin</artifactId>
-          <version>1.5.2.1</version>
+          <version>1.5</version>
         </plugin>
         <plugin>
           <groupId>com.bluetrainsoftware.maven</groupId>
@@ -123,10 +117,6 @@
           <configuration>
             <sourcepath>${basedir}/src/main/java;${basedir}/src/main/generated</sourcepath>
           </configuration>
-        </plugin>
-        <plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.5.3</version>
         </plugin>
       </plugins>
 
@@ -252,14 +242,7 @@
                   <goal>process-asciidoc</goal>
                 </goals>
                 <configuration>
-                  <sourceDirectory>${asciidoc.dir}</sourceDirectory>
-                  <outputDirectory>${project.build.directory}/docs/${project.artifactId}</outputDirectory>
-                  <sourceHighlighter>coderay</sourceHighlighter>
-                  <preserveDirectories>true</preserveDirectories>
-                  <relativeBaseDir>true</relativeBaseDir>
                   <skip>${doc.skip}</skip>
-                  <backend>html</backend>
-                  <doctype>book</doctype>
                 </configuration>
                 <phase>prepare-package</phase>
               </execution>
@@ -284,7 +267,6 @@
           <plugin>
             <groupId>com.phasebash.jsdoc</groupId>
             <artifactId>jsdoc3-maven-plugin</artifactId>
-            <version>1.1.0</version>
             <executions>
               <execution>
                 <phase>prepare-package</phase>
@@ -327,7 +309,7 @@
           <plugin>
             <groupId>de.saumya.mojo</groupId>
             <artifactId>gem-maven-plugin</artifactId>
-            <version>1.0.9</version>
+            <version>1.1.4</version>
             <executions>
               <execution>
                 <goals>
@@ -349,7 +331,7 @@
               <dependency>
                 <groupId>rubygems</groupId>
                 <artifactId>asciidoctor</artifactId>
-                <version>1.5.2</version>
+                <version>1.5.3</version>
                 <type>gem</type>
               </dependency>
             </dependencies>
