@@ -13,7 +13,7 @@
     </fileSet>
     <fileSet>
       <directory>${project.basedir}/src/main/resources</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory>./</outputDirectory>
     </fileSet>
     <fileSet>
       <directory>${project.basedir}/src/main/generated</directory>
