@@ -9,11 +9,11 @@
   <fileSets>
     <fileSet>
       <directory>${asciidoc.dir}</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory>./</outputDirectory>
     </fileSet>
     <fileSet>
       <directory>${project.build.directory}/docs/${project.artifactId}</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory>./</outputDirectory>
       <includes>
         <include>groovy/groovydoc/**</include>
         <include>js/jsdoc/**</include>
