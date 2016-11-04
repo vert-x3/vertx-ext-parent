@@ -19,9 +19,5 @@
       <directory>${project.basedir}/src/main/generated</directory>
       <outputDirectory>./</outputDirectory>
     </fileSet>
-    <fileSet>
-      <directory>${project.basedir}/src/main/groovy</directory>
-      <outputDirectory>./</outputDirectory>
-    </fileSet>
   </fileSets>
 </assembly>
