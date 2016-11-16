@@ -11,13 +11,5 @@
       <directory>${asciidoc.dir}</directory>
       <outputDirectory>./</outputDirectory>
     </fileSet>
-    <fileSet>
-      <directory>${project.build.directory}/docs/${project.artifactId}</directory>
-      <outputDirectory>./</outputDirectory>
-      <includes>
-        <include>js/jsdoc/**</include>
-        <include>ruby/yardoc/**</include>
-      </includes>
-    </fileSet>
   </fileSets>
 </assembly>
