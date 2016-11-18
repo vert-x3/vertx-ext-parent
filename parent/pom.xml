@@ -120,6 +120,7 @@
                 <maven.artifactId>${project.artifactId}</maven.artifactId>
                 <maven.version>${project.version}</maven.version>
               </optionMap>
+              <defaultOutputDirectory>${project.build.directory}/generated-sources/annotations</defaultOutputDirectory>
             </configuration>
           </execution>
         </executions>

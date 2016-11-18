@@ -19,5 +19,13 @@
       <directory>${project.basedir}/src/main/generated</directory>
       <outputDirectory>./</outputDirectory>
     </fileSet>
+    <fileSet>
+      <directory>${project.build.directory}/generated-sources/annotations</directory>
+      <outputDirectory>./</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${project.basedir}/src/main/kotlin</directory>
+      <outputDirectory>./</outputDirectory>
+    </fileSet>
   </fileSets>
 </assembly>
