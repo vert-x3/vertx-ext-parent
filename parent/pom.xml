@@ -45,6 +45,8 @@
     <!-- We skip sources jar generation as we do it with the assembly plugin to have greater
          control over the content -->
     <source.skip>true</source.skip>
+
+    <generated.dir>${project.basedir}/src/main/generated</generated.dir>
   </properties>
 
   <build>
@@ -58,7 +60,7 @@
               <configuration>
                 <filesets>
                   <fileset>
-                    <directory>src/main/generated</directory>
+                    <directory>${generated.dir}</directory>
                   </fileset>
                   <fileset>
                     <directory>${asciidoc.dir}</directory>
@@ -72,31 +74,6 @@
           </executions>
         </plugin>
         <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>default-compile</id>
-              <configuration>
-                <annotationProcessors>
-                  <annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
-                  <annotationProcessor>io.vertx.docgen.JavaDocGenProcessor</annotationProcessor>
-                  <annotationProcessor>io.vertx.docgen.DocGenProcessor</annotationProcessor>
-                </annotationProcessors>
-                <generatedSourcesDirectory>${project.basedir}/src/main/generated</generatedSourcesDirectory>
-                <compilerArgs>
-                  <arg>-AoutputDirectory=${project.basedir}/src/main</arg>
-                  <!-- $lang is replaced by the docgen processor to the target lang -->
-                  <arg>-Adocgen.output=${asciidoc.dir}/$lang</arg>
-
-                  <arg>-Amaven.groupId=${project.groupId}</arg>
-                  <arg>-Amaven.artifactId=${project.artifactId}</arg>
-                  <arg>-Amaven.version=${project.version}</arg>
-                </compilerArgs>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
           <version>1.9.1</version>
@@ -105,7 +82,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <configuration>
-            <sourcepath>${basedir}/src/main/java;${basedir}/src/main/generated</sourcepath>
+            <sourcepath>${basedir}/src/main/java;${generated.dir}</sourcepath>
           </configuration>
         </plugin>
       </plugins>
@@ -113,6 +90,59 @@
     </pluginManagement>
 
     <plugins>
+
+      <!-- Generate sources before compilation -->
+      <plugin>
+        <groupId>org.bsc.maven</groupId>
+        <artifactId>maven-processor-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>generate-sources</id>
+            <goals>
+              <goal>process</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <systemProperties>
+                <java.util.logging.SimpleFormatter.format>%4$s: %3$s - %5$s %6$s%n</java.util.logging.SimpleFormatter.format>
+              </systemProperties>
+              <processors>
+                <processor>io.vertx.codegen.CodeGenProcessor</processor>
+                <processor>io.vertx.docgen.JavaDocGenProcessor</processor>
+                <processor>io.vertx.docgen.DocGenProcessor</processor>
+              </processors>
+              <optionMap>
+                <outputDirectory>${project.basedir}/src/main</outputDirectory>
+                <!-- $lang is replaced by the docgen processor to the target lang -->
+                <docgen.output>${asciidoc.dir}/$lang</docgen.output>
+                <maven.groupId>${project.groupId}</maven.groupId>
+                <maven.artifactId>${project.artifactId}</maven.artifactId>
+                <maven.version>${project.version}</maven.version>
+              </optionMap>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.12</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${generated.dir}</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <artifactId>kotlin-maven-plugin</artifactId>
         <groupId>org.jetbrains.kotlin</groupId>
