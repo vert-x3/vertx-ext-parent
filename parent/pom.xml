@@ -47,6 +47,7 @@
     <source.skip>true</source.skip>
 
     <generated.dir>${project.basedir}/src/main/generated</generated.dir>
+    <codegen.rxjava.deprecated>false</codegen.rxjava.deprecated>
   </properties>
 
   <build>
@@ -113,7 +114,8 @@
                 <processor>io.vertx.docgen.DocGenProcessor</processor>
               </processors>
               <optionMap>
-                <outputDirectory>${project.basedir}/src/main</outputDirectory>
+                <codegen.output>${project.basedir}/src/main</codegen.output>
+                <codegen.rxjava.deprecated>${codegen.rxjava.deprecated}</codegen.rxjava.deprecated>
                 <!-- $lang is replaced by the docgen processor to the target lang -->
                 <docgen.output>${asciidoc.dir}/$lang</docgen.output>
                 <maven.groupId>${project.groupId}</maven.groupId>
