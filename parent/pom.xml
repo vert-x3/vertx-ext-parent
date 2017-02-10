@@ -48,6 +48,7 @@
 
     <generated.dir>${project.basedir}/src/main/generated</generated.dir>
     <codegen.rxjava.deprecated>false</codegen.rxjava.deprecated>
+    <maven.gmavenplus.plugin.version>1.5</maven.gmavenplus.plugin.version>
   </properties>
 
   <build>
@@ -86,8 +87,12 @@
             <sourcepath>${basedir}/src/main/java;${generated.dir}</sourcepath>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.gmavenplus</groupId>
+          <artifactId>gmavenplus-plugin</artifactId>
+          <version>${maven.gmavenplus.plugin.version}</version>
+        </plugin>
       </plugins>
-
     </pluginManagement>
 
     <plugins>
