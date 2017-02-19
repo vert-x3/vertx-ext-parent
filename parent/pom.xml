@@ -120,6 +120,8 @@
               </processors>
               <optionMap>
                 <codegen.output>${project.basedir}/src/main</codegen.output>
+                <!-- Data object converters are placed in src/main/generated -->
+                <codegen.output.data_object_converters>generated</codegen.output.data_object_converters>
                 <codegen.rxjava.deprecated>${codegen.rxjava.deprecated}</codegen.rxjava.deprecated>
                 <!-- $lang is replaced by the docgen processor to the target lang -->
                 <docgen.output>${asciidoc.dir}/$lang</docgen.output>
@@ -154,7 +156,7 @@
       <plugin>
         <artifactId>kotlin-maven-plugin</artifactId>
         <groupId>org.jetbrains.kotlin</groupId>
-        <version>1.0.4</version>
+        <version>1.0.6</version>
         <executions>
           <execution>
             <configuration>
