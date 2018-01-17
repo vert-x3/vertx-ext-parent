@@ -24,11 +24,11 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>vertx-ext</artifactId>
-    <version>28-SNAPSHOT</version>
+    <version>28</version>
   </parent>
 
   <artifactId>vertx-ext-parent</artifactId>
-  <version>28-SNAPSHOT</version>
+  <version>28</version>
   <packaging>pom</packaging>
 
   <name>Vert.x Ext Parent</name>
@@ -194,7 +194,7 @@
               <dependency>
                 <groupId>io.vertx</groupId>
                 <artifactId>vertx-ext-resources</artifactId>
-                <version>28-SNAPSHOT</version>
+                <version>28</version>
               </dependency>
             </dependencies>
             <executions>
