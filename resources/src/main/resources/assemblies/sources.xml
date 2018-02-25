@@ -16,6 +16,10 @@
       <outputDirectory>./</outputDirectory>
     </fileSet>
     <fileSet>
+      <directory>${asciidoc.dir}</directory>
+      <outputDirectory>./</outputDirectory>
+    </fileSet>
+    <fileSet>
       <directory>${project.basedir}/src/main/generated</directory>
       <outputDirectory>./</outputDirectory>
     </fileSet>

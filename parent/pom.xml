@@ -64,12 +64,6 @@
                   <fileset>
                     <directory>${generated.dir}</directory>
                   </fileset>
-                  <fileset>
-                    <directory>${asciidoc.dir}</directory>
-                    <excludes>
-                      <exclude>images/**</exclude>
-                    </excludes>
-                  </fileset>
                 </filesets>
               </configuration>
             </execution>
@@ -124,7 +118,8 @@
                 <codegen.output.data_object_converters>generated</codegen.output.data_object_converters>
                 <codegen.rxjava.deprecated>${codegen.rxjava.deprecated}</codegen.rxjava.deprecated>
                 <!-- $lang is replaced by the docgen processor to the target lang -->
-                <docgen.output>${asciidoc.dir}/$lang</docgen.output>
+                <docgen.source>${asciidoc.dir}/*.adoc</docgen.source>
+                <docgen.output>${project.build.directory}/asciidoc/$lang</docgen.output>
                 <maven.groupId>${project.groupId}</maven.groupId>
                 <maven.artifactId>${project.artifactId}</maven.artifactId>
                 <maven.version>${project.version}</maven.version>
