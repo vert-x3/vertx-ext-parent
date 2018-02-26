@@ -265,6 +265,7 @@
           <plugin>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
+            <version>1.5.6</version>
             <executions>
               <execution>
                 <id>asciidoctor</id>
@@ -274,6 +275,15 @@
                 <configuration>
                   <skip>${doc.skip}</skip>
                   <sourceDirectory>${project.build.directory}/asciidoc</sourceDirectory>
+                  <resources>
+                    <resource>
+                      <directory>${asciidoc.dir}</directory>
+                      <excludes>
+                        <exclude>**/*.ad</exclude>
+                        <exclude>**/*.adoc</exclude>
+                      </excludes>
+                    </resource>
+                  </resources>
                 </configuration>
                 <phase>prepare-package</phase>
               </execution>
