@@ -47,8 +47,6 @@
     <source.skip>true</source.skip>
 
     <generated.dir>${project.basedir}/src/main/generated</generated.dir>
-    <codegen.rxjava.deprecated>false</codegen.rxjava.deprecated>
-    <maven.gmavenplus.plugin.version>1.5</maven.gmavenplus.plugin.version>
   </properties>
 
   <build>
@@ -80,11 +78,6 @@
           <configuration>
             <sourcepath>${basedir}/src/main/java;${generated.dir}</sourcepath>
           </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.gmavenplus</groupId>
-          <artifactId>gmavenplus-plugin</artifactId>
-          <version>${maven.gmavenplus.plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -222,27 +215,6 @@
     <!-- Documentation generation : activate with -Pdocs -->
     <profile>
       <id>docs</id>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>rubygems-releases</id>
-          <url>http://rubygems-proxy.torquebox.org/releases</url>
-        </pluginRepository>
-      </pluginRepositories>
-      <repositories>
-        <repository>
-          <id>rubygems-releases</id>
-          <url>http://rubygems-proxy.torquebox.org/releases</url>
-        </repository>
-      </repositories>
-      <dependencies>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>yard</artifactId>
-          <version>0.8.7.6</version>
-          <type>gem</type>
-          <scope>provided</scope>
-        </dependency>
-      </dependencies>
       <build>
         <plugins>
           <plugin>
@@ -287,56 +259,6 @@
                 </goals>
               </execution>
             </executions>
-          </plugin>
-          <plugin>
-            <groupId>com.phasebash.jsdoc</groupId>
-            <artifactId>jsdoc3-maven-plugin</artifactId>
-            <executions>
-              <execution>
-                <phase>prepare-package</phase>
-                <goals>
-                  <goal>jsdoc3</goal>
-                </goals>
-                <configuration>
-                  <recursive>true</recursive>
-                  <skip>${doc.skip}</skip>
-                  <directoryRoots>
-                    <directoryRoot>${basedir}/src/main/resources</directoryRoot>
-                  </directoryRoots>
-                  <outputDirectory>${project.build.directory}/docs/jsdoc</outputDirectory>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>de.saumya.mojo</groupId>
-            <artifactId>gem-maven-plugin</artifactId>
-            <version>1.1.4</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>exec</goal>
-                </goals>
-                <phase>prepare-package</phase>
-                <configuration>
-                  <execArgs>${project.build.directory}/rubygems/bin/yardoc --no-private -m html -o ${project.build.directory}/docs/yardoc ${project.basedir}/src/main/resources/**/*.rb</execArgs>
-                </configuration>
-              </execution>
-            </executions>
-            <dependencies>
-              <dependency>
-                <groupId>rubygems</groupId>
-                <artifactId>yard</artifactId>
-                <version>0.8.7.6</version>
-                <type>gem</type>
-              </dependency>
-              <dependency>
-                <groupId>rubygems</groupId>
-                <artifactId>asciidoctor</artifactId>
-                <version>1.5.3</version>
-                <type>gem</type>
-              </dependency>
-            </dependencies>
           </plugin>
         </plugins>
       </build>
