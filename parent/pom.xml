@@ -103,16 +103,13 @@
               <processors>
                 <processor>io.vertx.codegen.CodeGenProcessor</processor>
                 <processor>io.vertx.docgen.JavaDocGenProcessor</processor>
-                <processor>io.vertx.docgen.DocGenProcessor</processor>
               </processors>
               <optionMap>
                 <codegen.output>${project.basedir}/src/main</codegen.output>
                 <!-- Data object converters are placed in src/main/generated -->
                 <codegen.output.data_object_converters>generated</codegen.output.data_object_converters>
-                <codegen.rxjava.deprecated>${codegen.rxjava.deprecated}</codegen.rxjava.deprecated>
-                <!-- $lang is replaced by the docgen processor to the target lang -->
                 <docgen.source>${asciidoc.dir}/*.adoc</docgen.source>
-                <docgen.output>${project.build.directory}/asciidoc/$lang</docgen.output>
+                <docgen.output>${project.build.directory}/asciidoc</docgen.output>
                 <maven.groupId>${project.groupId}</maven.groupId>
                 <maven.artifactId>${project.artifactId}</maven.artifactId>
                 <maven.version>${project.version}</maven.version>

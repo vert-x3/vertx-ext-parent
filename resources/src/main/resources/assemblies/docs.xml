@@ -17,7 +17,7 @@
     </fileSet>
     <fileSet>
       <directory>${project.build.directory}/asciidoc</directory>
-      <outputDirectory>./</outputDirectory>
+      <outputDirectory>./java</outputDirectory>
     </fileSet>
   </fileSets>
 </assembly>
