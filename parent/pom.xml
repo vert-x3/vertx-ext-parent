@@ -68,15 +68,11 @@
           </executions>
         </plugin>
         <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>1.9.1</version>
-        </plugin>
-        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <configuration>
             <sourcepath>${basedir}/src/main/java;${generated.dir}</sourcepath>
+            <reportOutputDirectory>${project.build.directory}/docs</reportOutputDirectory>
           </configuration>
         </plugin>
       </plugins>
@@ -109,7 +105,7 @@
                 <!-- Data object converters are placed in src/main/generated -->
                 <codegen.output.data_object_converters>generated</codegen.output.data_object_converters>
                 <docgen.source>${asciidoc.dir}/*.adoc</docgen.source>
-                <docgen.output>${project.build.directory}/asciidoc</docgen.output>
+                <docgen.output>${project.build.directory}/asciidoc/java</docgen.output>
                 <maven.groupId>${project.groupId}</maven.groupId>
                 <maven.artifactId>${project.artifactId}</maven.artifactId>
                 <maven.version>${project.version}</maven.version>
@@ -122,7 +118,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.12</version>
         <executions>
           <execution>
             <id>add-source</id>
@@ -134,6 +129,53 @@
               <sources>
                 <source>${generated.dir}</source>
               </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>gen-javadoc</id>
+            <phase>site</phase>
+            <goals>
+              <goal>javadoc</goal>
+            </goals>
+            <configuration>
+              <skip>${doc.skip}</skip>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>gen-asciidoc</id>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <phase>site</phase>
+            <configuration>
+              <skip>${doc.skip}</skip>
+              <sourceDirectory>${project.build.directory}/asciidoc</sourceDirectory>
+              <resources>
+                <resource>
+                  <directory>${asciidoc.dir}</directory>
+                  <excludes>
+                    <exclude>**/*.ad</exclude>
+                    <exclude>**/*.adoc</exclude>
+                  </excludes>
+                </resource>
+              </resources>
             </configuration>
           </execution>
         </executions>
@@ -207,58 +249,6 @@
         </plugins>
       </build>
 
-    </profile>
-
-    <!-- Documentation generation : activate with -Pdocs -->
-    <profile>
-      <id>docs</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.asciidoctor</groupId>
-            <artifactId>asciidoctor-maven-plugin</artifactId>
-            <version>1.5.6</version>
-            <executions>
-              <execution>
-                <id>asciidoctor</id>
-                <goals>
-                  <goal>process-asciidoc</goal>
-                </goals>
-                <configuration>
-                  <skip>${doc.skip}</skip>
-                  <sourceDirectory>${project.build.directory}/asciidoc</sourceDirectory>
-                  <resources>
-                    <resource>
-                      <directory>${asciidoc.dir}</directory>
-                      <excludes>
-                        <exclude>**/*.ad</exclude>
-                        <exclude>**/*.adoc</exclude>
-                      </excludes>
-                    </resource>
-                  </resources>
-                </configuration>
-                <phase>prepare-package</phase>
-              </execution>
-            </executions>
-          </plugin>
-
-          <plugin>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <executions>
-              <execution>
-                <phase>prepare-package</phase>
-                <configuration>
-                  <skip>${doc.skip}</skip>
-                  <reportOutputDirectory>${project.build.directory}/docs</reportOutputDirectory>
-                </configuration>
-                <goals>
-                  <goal>javadoc</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
     </profile>
   </profiles>
 
