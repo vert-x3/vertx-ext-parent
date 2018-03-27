@@ -110,7 +110,7 @@
                 <maven.artifactId>${project.artifactId}</maven.artifactId>
                 <maven.version>${project.version}</maven.version>
               </optionMap>
-              <defaultOutputDirectory>${project.build.directory}/generated-sources/annotations</defaultOutputDirectory>
+              <defaultOutputDirectory>${project.build.directory}/generated-sources/codegen</defaultOutputDirectory>
             </configuration>
           </execution>
         </executions>
