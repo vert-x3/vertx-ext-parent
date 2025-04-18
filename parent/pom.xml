@@ -84,7 +84,7 @@
       <plugin>
         <groupId>org.bsc.maven</groupId>
         <artifactId>maven-processor-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>${maven.maven.processor.plugin}</version>
         <executions>
           <execution>
             <id>generate-sources</id>
@@ -251,7 +251,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.7</version>
+        <version>${maven.project.info.reports.plugin}</version>
         <reportSets>
           <reportSet>
             <reports>
