@@ -202,27 +202,6 @@
               </dependency>
             </dependencies>
             <executions>
-
-              <!-- Package sources -->
-              <execution>
-                <id>package-sources</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>single</goal>
-                </goals>
-                <configuration>
-                  <attach>true</attach>
-                  <archive>
-                    <!-- Need a manifest to avoid empty archive -->
-                    <manifest>
-                    </manifest>
-                  </archive>
-                  <descriptorRefs>
-                    <descriptorRef>sources</descriptorRef>
-                  </descriptorRefs>
-                </configuration>
-              </execution>
-
               <!-- Package docs -->
               <execution>
                 <id>package-docs</id>
